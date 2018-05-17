@@ -1,7 +1,8 @@
 package com.ummetcivi.kalahgame.service;
 
 import com.ummetcivi.kalahgame.domain.Game;
-import com.ummetcivi.kalahgame.engine.GameEngine;
+import com.ummetcivi.kalahgame.domain.Player;
+import com.ummetcivi.kalahgame.executor.CommandChainExecutor;
 import com.ummetcivi.kalahgame.repository.GameRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,9 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class GameService {
+
     private final GameRepository gameRepository;
-    private final GameEngine gameEngine;
+    private final CommandChainExecutor commandChainExecutor;
 
     public Game createGame() {
         Game game = new Game();
@@ -41,13 +43,14 @@ public class GameService {
         return game;
     }
 
-    public Game play(String playerId, int slot) {
+    public Game play(String playerId, int pit) {
         Game game = getGameByPlayerId(playerId);
 
-        gameEngine.play(game, playerId, slot);
+        Player player = game.getPlayer(playerId);
+        pit += game.board().getStartIndex(player);
 
-        gameRepository.save(game);
+        commandChainExecutor.execute(game, player, pit);
 
-        return game;
+        return gameRepository.save(game);
     }
 }

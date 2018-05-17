@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/api/game", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GameController {
+
     private static final String PLAYER_ID_HEADER = "playerId";
     private final GameService gameService;
     private final GameToGameResourceConverter converter;
@@ -42,8 +43,8 @@ public class GameController {
     }
 
     @PutMapping("/play")
-    public ResponseEntity<GameResource> play(@RequestHeader(PLAYER_ID_HEADER) String playerId, @RequestParam int slot) {
-        Game game = gameService.play(playerId, slot);
+    public ResponseEntity<GameResource> play(@RequestHeader(PLAYER_ID_HEADER) String playerId, @RequestParam int pit) {
+        Game game = gameService.play(playerId, pit);
 
         return ResponseEntity.ok()
                 .body(converter.convert(game, playerId));

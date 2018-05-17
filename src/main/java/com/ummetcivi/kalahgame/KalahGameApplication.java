@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KalahgameApplication {
+public class KalahGameApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(KalahgameApplication.class, args);
+        SpringApplication.run(KalahGameApplication.class, args);
     }
 }

@@ -1,12 +1,12 @@
-package com.ummetcivi.kalahgame.engine.rule;
+package com.ummetcivi.kalahgame.executor.command;
 
 import com.ummetcivi.kalahgame.domain.Game;
 import com.ummetcivi.kalahgame.domain.Player;
 
-public class CheckOwnerOfPit extends Rule {
+public class CheckOwnerOfPit extends Command {
     @Override
-    void execute(Game game, Player player, int pit) {
-        if (!game.playerOwnsPit(player, pit)) {
+    void run(Game game, Player player, int pit) {
+        if (!game.board().playerOwnsPit(player, pit)) {
             throw new IllegalArgumentException("That pit doesn't belong to you!");
         }
     }
