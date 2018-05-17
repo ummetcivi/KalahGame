@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/api/game", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GameController {
 
-    private static final String PLAYER_ID_HEADER = "playerId";
+    private static final String PLAYER_ID_HEADER = "Player-Id";
     private final GameService gameService;
     private final GameToGameResourceConverter converter;
 
