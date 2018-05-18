@@ -13,7 +13,7 @@ public class CheckEnd extends Command {
             boolean ended = isEnded(player, board) || isEnded(player.opponent(), board);
 
             if (!ended) {
-                return game.getGameStatus();
+                return gameStatus;
             }
 
             return findWinner(game, player);
