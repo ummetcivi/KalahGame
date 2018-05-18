@@ -34,8 +34,8 @@ This endpoint creates new game.
 ### Get Game
 This endpoint gets GameResource.
 
-`GET /api/game
- Headers: Player-Id={playerId}`
+    GET /api/game
+    Headers: Player-Id={playerId}
    
 ### Join Game
 This endpoint joins the game if available.
@@ -45,8 +45,8 @@ This endpoint joins the game if available.
 ### Play
 This endpoint makes a move in given pit
 
-`PUT /api/game/play?pit={pit}
- Headers: Player-Id={playerId}`
+    PUT /api/game/play?pit={pit}
+    Headers: Player-Id={playerId}
  
  
 Run Project
