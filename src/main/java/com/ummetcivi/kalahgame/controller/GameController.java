@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
 @RequestMapping(path = "/api/game", produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin
 public class GameController {
 
     private static final String PLAYER_ID_HEADER = "Player-Id";
